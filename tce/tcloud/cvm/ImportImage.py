@@ -26,16 +26,15 @@ try:
     client = cvm_client.CvmClient(cred, "shanghai", clientProfile)
 
     # 实例化一个cvm实例信息查询请求对象,每个接口都会对应一个request对象。
-    req = models.DeleteImagesRequest()
-
+    req = models.ImportImageRequest()
     # 这里还支持以标准json格式的string来赋值请求参数的方式。下面的代码跟上面的参数赋值是等效的。
-    params = '{"ImageIds":["img-2p3uz0kx"]}'
-    #
+    params = '{"OsType":"CentOS","OsVersion":"7","ImageName":"sample","ImageUrl":"http://console.test.403a.tcecqpoc.fsphere.cn/cvm/image","Architecture":"x86_64"}'
+
     req.from_json_string(params)
 
     # 通过client对象调用DescribeInstances方法发起请求。注意请求方法名与请求对象是对应的。
     # 返回的resp是一个DescribeInstancesResponse类的实例，与请求对象对应。
-    resp = client.DeleteImages(req)
+    resp = client.ImportImage(req)
 
     # 输出json格式的字符串回包
     print(resp.to_json_string())
