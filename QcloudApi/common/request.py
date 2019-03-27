@@ -11,7 +11,8 @@ except ImportError:
     from urlparse import urlparse
 
 from .api_exception import ApiClientNetworkException, ApiClientParamException
-
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
 class MyHTTPSConnection(HTTPSConnection):
     def __init__(self, host, port=None):
