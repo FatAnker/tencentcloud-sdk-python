@@ -16,4 +16,4 @@ from QcloudApi.modules import base
 
 
 class Vpc(base.Base):
-    requestHost = 'vpc.api.qcloud.com'
+    requestHost = 'vpc.api2.test.403a.tcecqpoc.fsphere.cn'
