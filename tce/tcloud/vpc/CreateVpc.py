@@ -1,12 +1,11 @@
 # -*- coding: utf8 -*-
 from QcloudApi.qcloudapi import QcloudApi
 from utils.server_conf import settings
-
 # 设置需要加载的模块
 module = 'vpc'
 
 # 对应接口的接口名，请参考wiki文档上对应接口的接口名
-action = 'DeleteSubnet'
+action = 'CreateVpc'
 Region = 'shanghai'
 
 total_params = settings.get(Region)
@@ -23,8 +22,9 @@ config = {
 # 例如数组可以 "ArrayExample": ["1","2","3"]
 # 例如字典可以 "DictExample": {"key1": "value1", "key2": "values2"}
 action_params = {
-    'vpcId':"vpc-nqqxkact",
-    "subnetId":"subnet-eiv8hmfs"
+    "vpcName": "新测试专用",
+    "cidrBlock": "10.0.0.0/16",
+    "subnetSet": [{"zoneId": "50050001", "subnetName": "新测试子网", "cidrBlock": "10.0.0.0/24"}]
 }
 
 try:

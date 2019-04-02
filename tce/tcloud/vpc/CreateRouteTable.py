@@ -6,7 +6,7 @@ from utils.server_conf import settings
 module = 'vpc'
 
 # 对应接口的接口名，请参考wiki文档上对应接口的接口名
-action = 'DeleteSubnet'
+action = 'CreateRouteTable'
 Region = 'shanghai'
 
 total_params = settings.get(Region)
@@ -23,8 +23,9 @@ config = {
 # 例如数组可以 "ArrayExample": ["1","2","3"]
 # 例如字典可以 "DictExample": {"key1": "value1", "key2": "values2"}
 action_params = {
-    'vpcId':"vpc-nqqxkact",
-    "subnetId":"subnet-eiv8hmfs"
+    'vpcId':"vpc-fvc4grc1",
+    "routeTableName":"新路由",
+    "routeSet":[{"destinationCidrBlock": "Local", "nextType": 2, "nextHub": "Local", "description": "系统默认下发，表示 VPC 内云主机网络互通"},{"destinationCidrBlock": "112.20.51.0/24", "nextType": "1", "nextHub": "vpngw-mydylw3f", "description": ""}]
 }
 
 try:

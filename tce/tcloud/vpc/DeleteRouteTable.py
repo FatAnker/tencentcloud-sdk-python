@@ -23,8 +23,8 @@ config = {
 # 例如数组可以 "ArrayExample": ["1","2","3"]
 # 例如字典可以 "DictExample": {"key1": "value1", "key2": "values2"}
 action_params = {
-    'vpcId': "shanghai_vpc_67378",
-    "routeTableId": "shanghai_rtb_2900"
+    'vpcId': "vpc-fvc4grc1",
+    "routeTableId": "rtb-r02vzy7a"
 }
 
 try:

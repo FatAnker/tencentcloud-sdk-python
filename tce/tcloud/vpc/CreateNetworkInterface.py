@@ -6,7 +6,7 @@ from utils.server_conf import settings
 module = 'vpc'
 
 # 对应接口的接口名，请参考wiki文档上对应接口的接口名
-action = 'DeleteSubnet'
+action = 'CreateNetworkInterface'
 Region = 'shanghai'
 
 total_params = settings.get(Region)
@@ -23,8 +23,10 @@ config = {
 # 例如数组可以 "ArrayExample": ["1","2","3"]
 # 例如字典可以 "DictExample": {"key1": "value1", "key2": "values2"}
 action_params = {
-    'vpcId':"vpc-nqqxkact",
-    "subnetId":"subnet-eiv8hmfs"
+    "eniName": "新测试网卡",
+    "secondaryPrivateIpAddressCount": "0",
+    "subnetId": "subnet-d5dbdgho",
+    "vpcId": "vpc-16jpa8wx"
 }
 
 try:
