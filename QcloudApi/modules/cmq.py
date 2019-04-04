@@ -15,5 +15,6 @@
 from QcloudApi.modules import base
 
 
-class Monitor(base.Base):
-    requestHost = 'monitor.api2.401.tcecqpoc.fsphere.cn'
+class CMQ(base.Base):
+    requestHost = 'cmq.api2.test.403a.tcecqpoc.fsphere.cn'
+    # requestHost = 'clb.api2.test.403a.tcecqpoc.fsphere.cn'
