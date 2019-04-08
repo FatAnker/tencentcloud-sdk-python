@@ -16,29 +16,63 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class ClearInstanceRequest(AbstractModel):
-    """ClearInstance请求参数结构体
+class AdderrorRequest(AbstractModel):
+    """Adderror请求参数结构体
 
     """
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id
-        :type InstanceId: str
+        :param UserType: asdf
+        :type UserType: list of str datetime
+        """
+        self.UserType = None
+
+
+    def _deserialize(self, params):
+        self.UserType = params.get("UserType")
+
+
+class AdderrorResponse(AbstractModel):
+    """Adderror返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ClearRedisRequest(AbstractModel):
+    """ClearRedis请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RedisId: 实例id
+        :type RedisId: str
         :param Password: redis的实例密码
         :type Password: str
         """
-        self.InstanceId = None
+        self.RedisId = None
         self.Password = None
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self.RedisId = params.get("RedisId")
         self.Password = params.get("Password")
 
 
-class ClearInstanceResponse(AbstractModel):
-    """ClearInstance返回参数结构体
+class ClearRedisResponse(AbstractModel):
+    """ClearRedis返回参数结构体
 
     """
 
@@ -58,8 +92,8 @@ class ClearInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateInstancesRequest(AbstractModel):
-    """CreateInstances请求参数结构体
+class CreateRedisHourRequest(AbstractModel):
+    """CreateRedisHour请求参数结构体
 
     """
 
@@ -67,36 +101,34 @@ class CreateInstancesRequest(AbstractModel):
         """
         :param ZoneId: 实例所属的可用区id
         :type ZoneId: int
-        :param TypeId: 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，7 – Redis4.0集群版，
+        :param TypeId: 实例类型：1 – 集群版，2 – 主从版，3-新一代主从版，4-ckv集群版
         :type TypeId: int
-        :param MemSize: 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准
+        :param MemSize: 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准， 取值范围[data.types.minMemSize, data.types.maxMemSize]
         :type MemSize: int
-        :param GoodsNum: 实例数量，单次购买实例数量以 查询售卖规格接口返回的规格为准
+        :param GoodsNum: 实例数量，单次购买实例数量以 查询售卖规格接口返回的规格为准， 取值范[data.types.minBuyNum, data.types.maxBuyNum]
         :type GoodsNum: int
         :param Period: 购买时长，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
         :type Period: int
-        :param Password: 实例密码，密码规则：1.长度为8-16个字符；2:至少包含字母、数字和字符!@^*()中的两种
+        :param Password: 实例密码，密码规则：1.长度为8-16个字符；2:至少包含字母、数字和字符（!@#%^()）中的两种
         :type Password: str
-        :param BillingMode: 付费方式:0-按量计费，1-包年包月。
-        :type BillingMode: int
-        :param VpcId: 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表查询，如：vpc-sad23jfdfk
-        :type VpcId: str
-        :param SubnetId: 基础网络下， subnetId无效； vpc子网下，取值以查询子网列表，如：subnet-fdj24n34j2
-        :type SubnetId: str
+        :param VpcId: 历史原因，仍保留该参数，推荐使用下面参数unVpcId。 私有网络ID，如果不传则默认选择基础网络。
+        :type VpcId: list of int
+        :param UnVpcId: 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表 查询 返回的unVpcId为准，如：vpc-kd7d06of
+        :type UnVpcId: str
+        :param SubnetId: 历史原因，仍保留该参数，推荐使用下面参数unSubnetId。私有网络下的子网ID，如果设置了 vpcId，则 subnetId 必填。
+        :type SubnetId: int
+        :param UnSubnetId: 基础网络下， subnetId无效； vpc子网下，取值以查询查询子网列表 返回的unSubnetId为准，如：subnet-3lzrkspo
+        :type UnSubnetId: str
         :param ProjectId: 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准
         :type ProjectId: int
-        :param AutoRenew: 自动续费表示。0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
-        :type AutoRenew: int
-        :param SecurityGroupIdList: 安全组id数组
-        :type SecurityGroupIdList: list of str
+        :param AutoRenewFlag: 自动续费表示。0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+        :type AutoRenewFlag: int
+        :param ZoneName: 安全组id数组
+        :type ZoneName: str
         :param VPort: 用户自定义的端口 不填则默认为6379
-        :type VPort: int
-        :param RedisShardNum: 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
-        :type RedisShardNum: int
-        :param RedisReplicasNum: 实例副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
-        :type RedisReplicasNum: int
-        :param ReplicasReadonly: 是否支持副本只读，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
-        :type ReplicasReadonly: bool
+        :type VPort: list of int
+        :param SecurityGroupList: 实例所属区域名称，形如：ap-beijing-1、ap-shanghai-1、ap-guangzhou-1
+        :type SecurityGroupList: list of int
         """
         self.ZoneId = None
         self.TypeId = None
@@ -104,16 +136,15 @@ class CreateInstancesRequest(AbstractModel):
         self.GoodsNum = None
         self.Period = None
         self.Password = None
-        self.BillingMode = None
         self.VpcId = None
+        self.UnVpcId = None
         self.SubnetId = None
+        self.UnSubnetId = None
         self.ProjectId = None
-        self.AutoRenew = None
-        self.SecurityGroupIdList = None
+        self.AutoRenewFlag = None
+        self.ZoneName = None
         self.VPort = None
-        self.RedisShardNum = None
-        self.RedisReplicasNum = None
-        self.ReplicasReadonly = None
+        self.SecurityGroupList = None
 
 
     def _deserialize(self, params):
@@ -123,20 +154,117 @@ class CreateInstancesRequest(AbstractModel):
         self.GoodsNum = params.get("GoodsNum")
         self.Period = params.get("Period")
         self.Password = params.get("Password")
-        self.BillingMode = params.get("BillingMode")
         self.VpcId = params.get("VpcId")
+        self.UnVpcId = params.get("UnVpcId")
         self.SubnetId = params.get("SubnetId")
+        self.UnSubnetId = params.get("UnSubnetId")
         self.ProjectId = params.get("ProjectId")
-        self.AutoRenew = params.get("AutoRenew")
-        self.SecurityGroupIdList = params.get("SecurityGroupIdList")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.ZoneName = params.get("ZoneName")
         self.VPort = params.get("VPort")
-        self.RedisShardNum = params.get("RedisShardNum")
-        self.RedisReplicasNum = params.get("RedisReplicasNum")
-        self.ReplicasReadonly = params.get("ReplicasReadonly")
+        self.SecurityGroupList = params.get("SecurityGroupList")
 
 
-class CreateInstancesResponse(AbstractModel):
-    """CreateInstances返回参数结构体
+class CreateRedisHourResponse(AbstractModel):
+    """CreateRedisHour返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param ResourceIds: 资源列表
+        :type ResourceIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.ResourceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.ResourceIds = params.get("ResourceIds")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRedisRequest(AbstractModel):
+    """CreateRedis请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ZoneId: 实例所属的可用区id
+        :type ZoneId: int
+        :param TypeId: 实例类型：1 – 集群版，2 – 主从版，4，ckv集群版
+        :type TypeId: int
+        :param MemSize: 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准， 取值范围[data.types.minMemSize, data.types.maxMemSize]
+        :type MemSize: int
+        :param GoodsNum: 实例数量，单次购买实例数量以 查询售卖规格接口返回的规格为准， 取值范[data.types.minBuyNum, data.types.maxBuyNum]
+        :type GoodsNum: int
+        :param Period: 购买时长，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
+        :type Period: int
+        :param Password: 实例密码，密码规则：1.长度为8-16个字符；2:至少包含字母、数字和字符（!@#%^()）中的两种
+        :type Password: str
+        :param VpcId: 历史原因，仍保留该参数，推荐使用下面参数unVpcId。 私有网络ID，如果不传则默认选择基础网络。
+        :type VpcId: int
+        :param UnVpcId: 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表 查询 返回的unVpcId为准，如：vpc-kd7d06of
+        :type UnVpcId: str
+        :param SubnetId: 历史原因，仍保留该参数，推荐使用下面参数unSubnetId。私有网络下的子网ID，如果设置了 vpcId，则 subnetId 必填。
+        :type SubnetId: int
+        :param UnSubnetId: 基础网络下， subnetId无效； vpc子网下，取值以查询查询子网列表 返回的unSubnetId为准，如：subnet-3lzrkspo
+        :type UnSubnetId: str
+        :param ProjectId: 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准
+        :type ProjectId: int
+        :param AutoRenewFlag: 自动续费表示。0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+        :type AutoRenewFlag: int
+        :param SecurityGroupList: 安全组id数组
+        :type SecurityGroupList: list of int
+        :param VPort: 用户自定义的端口 不填则默认为6379
+        :type VPort: int
+        :param ZoneName: 实例所属区域名称，形如：ap-beijing-1、ap-shanghai-1、ap-guangzhou-1
+        :type ZoneName: str
+        """
+        self.ZoneId = None
+        self.TypeId = None
+        self.MemSize = None
+        self.GoodsNum = None
+        self.Period = None
+        self.Password = None
+        self.VpcId = None
+        self.UnVpcId = None
+        self.SubnetId = None
+        self.UnSubnetId = None
+        self.ProjectId = None
+        self.AutoRenewFlag = None
+        self.SecurityGroupList = None
+        self.VPort = None
+        self.ZoneName = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.TypeId = params.get("TypeId")
+        self.MemSize = params.get("MemSize")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Period = params.get("Period")
+        self.Password = params.get("Password")
+        self.VpcId = params.get("VpcId")
+        self.UnVpcId = params.get("UnVpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.UnSubnetId = params.get("UnSubnetId")
+        self.ProjectId = params.get("ProjectId")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.SecurityGroupList = params.get("SecurityGroupList")
+        self.VPort = params.get("VPort")
+        self.ZoneName = params.get("ZoneName")
+
+
+class CreateRedisResponse(AbstractModel):
+    """CreateRedis返回参数结构体
 
     """
 
@@ -156,127 +284,14 @@ class CreateInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeAutoBackupConfigRequest(AbstractModel):
-    """DescribeAutoBackupConfig请求参数结构体
+class DescribeRedisDealDetailRequest(AbstractModel):
+    """DescribeRedisDealDetail请求参数结构体
 
     """
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        """
-        self.InstanceId = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-
-
-class DescribeAutoBackupConfigResponse(AbstractModel):
-    """DescribeAutoBackupConfig返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param AutoBackupType: 备份类型。自动备份类型： 1 “定时回档”
-        :type AutoBackupType: int
-        :param WeekDays: Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
-        :type WeekDays: list of str
-        :param TimePeriod: 时间段。
-        :type TimePeriod: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.AutoBackupType = None
-        self.WeekDays = None
-        self.TimePeriod = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.AutoBackupType = params.get("AutoBackupType")
-        self.WeekDays = params.get("WeekDays")
-        self.TimePeriod = params.get("TimePeriod")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeInstanceBackupsRequest(AbstractModel):
-    """DescribeInstanceBackups请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param InstanceId: 待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。
-        :type InstanceId: str
-        :param Limit: 实例列表大小，默认大小20
-        :type Limit: int
-        :param Offset: 偏移量，取Limit整数倍
-        :type Offset: int
-        :param BeginTime: 开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
-        :type BeginTime: str
-        :param EndTime: 结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
-        :type EndTime: str
-        :param Status: 1：备份在流程中，2：备份正常，3：备份转RDB文件处理中，4：已完成RDB转换，-1：备份已过期，-2：备份已删除。
-        :type Status: list of str
-        """
-        self.InstanceId = None
-        self.Limit = None
-        self.Offset = None
-        self.BeginTime = None
-        self.EndTime = None
-        self.Status = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
-        self.Status = params.get("Status")
-
-
-class DescribeInstanceBackupsResponse(AbstractModel):
-    """DescribeInstanceBackups返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 备份总数
-        :type TotalCount: int
-        :param BackupSet: 实例的备份数组
-        :type BackupSet: list of RedisBackupSet
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.BackupSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("BackupSet") is not None:
-            self.BackupSet = []
-            for item in params.get("BackupSet"):
-                obj = RedisBackupSet()
-                obj._deserialize(item)
-                self.BackupSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeInstanceDealDetailRequest(AbstractModel):
-    """DescribeInstanceDealDetail请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param DealIds: 订单ID数组
+        :param DealIds: 交易ID列表
         :type DealIds: list of str
         """
         self.DealIds = None
@@ -286,15 +301,15 @@ class DescribeInstanceDealDetailRequest(AbstractModel):
         self.DealIds = params.get("DealIds")
 
 
-class DescribeInstanceDealDetailResponse(AbstractModel):
-    """DescribeInstanceDealDetail返回参数结构体
+class DescribeRedisDealDetailResponse(AbstractModel):
+    """DescribeRedisDealDetail返回参数结构体
 
     """
 
     def __init__(self):
         """
-        :param DealDetails: 订单详细信息
-        :type DealDetails: list of TradeDealDetail
+        :param DealDetails: 交易详情。
+        :type DealDetails: :class:`tencentcloud.redis.v20180412.models.TradeDealDetails`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -304,81 +319,150 @@ class DescribeInstanceDealDetailResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("DealDetails") is not None:
-            self.DealDetails = []
-            for item in params.get("DealDetails"):
-                obj = TradeDealDetail()
-                obj._deserialize(item)
-                self.DealDetails.append(obj)
+            self.DealDetails = TradeDealDetails()
+            self.DealDetails._deserialize(params.get("DealDetails"))
         self.RequestId = params.get("RequestId")
 
 
-class DescribeInstancesRequest(AbstractModel):
-    """DescribeInstances请求参数结构体
+class DescribeRedisProductRequest(AbstractModel):
+    """DescribeRedisProduct请求参数结构体
 
     """
 
     def __init__(self):
         """
-        :param Limit: 实例列表的大小，参数默认值20
+        :param ZoneIds: 可用区id组成的数组，数组下标从0开始, 若不传此参数将返回所有区域产品信息, 取值以查询售卖可用区返回为准
+        :type ZoneIds: list of str
+        :param TypeId: 实例类型：1 – 集群版，2 – 主从版, 3-新一代主从版，0 – 所有类型
+        :type TypeId: int
+        """
+        self.ZoneIds = None
+        self.TypeId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneIds = params.get("ZoneIds")
+        self.TypeId = params.get("TypeId")
+
+
+class DescribeRedisProductResponse(AbstractModel):
+    """DescribeRedisProduct返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Regions: 各地域的售卖规则
+        :type Regions: :class:`tencentcloud.redis.v20180412.models.RegionConf`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Regions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Regions") is not None:
+            self.Regions = RegionConf()
+            self.Regions._deserialize(params.get("Regions"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRedisRegionsRequest(AbstractModel):
+    """DescribeRedisRegions请求参数结构体
+
+    """
+
+
+class DescribeRedisRegionsResponse(AbstractModel):
+    """DescribeRedisRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionSets: 地域列表。
+        :type RegionSets: list of RedisRegion
+        :param TotalCount: 地域数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegionSets = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RegionSets") is not None:
+            self.RegionSets = []
+            for item in params.get("RegionSets"):
+                obj = RedisRegion()
+                obj._deserialize(item)
+                self.RegionSets.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRedisRequest(AbstractModel):
+    """DescribeRedis请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 分页大小
         :type Limit: int
-        :param Offset: 偏移量，取Limit整数倍
+        :param Offset: 当前页码
         :type Offset: int
-        :param InstanceId: 实例Id，如：crs-6ubhgouj
-        :type InstanceId: str
-        :param OrderBy: 枚举范围： projectId,createtime,instancename,type,curDeadline
+        :param RedisId: 实例Id
+        :type RedisId: str
+        :param RedisName: 实例名称
+        :type RedisName: str
+        :param OrderBy: 枚举范围redisId,projectId,createtime
         :type OrderBy: str
         :param OrderType: 1倒序，0顺序，默认倒序
         :type OrderType: int
-        :param VpcIds: 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：47525
-        :type VpcIds: list of str
-        :param SubnetIds: 子网ID数组，数组下标从0开始，如：56854
-        :type SubnetIds: list of str
+        :param VpcIds: 历史原因，仍保留该参数，推荐使用下面参数unVpcIds。 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络。
+        :type VpcIds: list of int
+        :param UnVpcIds: 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络。请使用私有网络列表 查询返回的unVpcId为准，如：vpc-kd7d06of
+        :type UnVpcIds: list of str
+        :param SubnetIds: 历史原因，仍保留该参数，推荐使用下面参数unSubnetIds。私有网络下的子网ID数组，数组下标从0开始
+        :type SubnetIds: list of int
+        :param UnSubnetIds: 子网ID数组，数组下标从0开始。 vpc子网下，取值以查询查询子网列表 返回的unSubnetId为准，如：subnet-3lzrkspo
+        :type UnSubnetIds: list of str
         :param ProjectIds: 项目ID 组成的数组，数组下标从0开始
-        :type ProjectIds: list of int
-        :param SearchKey: 查找实例的ID。
-        :type SearchKey: str
-        :param InstanceName: 实例名称
-        :type InstanceName: str
-        :param UniqVpcIds: 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk
-        :type UniqVpcIds: list of str
-        :param UniqSubnetIds: 子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2
-        :type UniqSubnetIds: list of str
-        :param RegionIds: 地域ID，已经弃用，可通过公共参数Region查询对应地域
-        :type RegionIds: list of int
+        :type ProjectIds: list of str
         """
         self.Limit = None
         self.Offset = None
-        self.InstanceId = None
+        self.RedisId = None
+        self.RedisName = None
         self.OrderBy = None
         self.OrderType = None
         self.VpcIds = None
+        self.UnVpcIds = None
         self.SubnetIds = None
+        self.UnSubnetIds = None
         self.ProjectIds = None
-        self.SearchKey = None
-        self.InstanceName = None
-        self.UniqVpcIds = None
-        self.UniqSubnetIds = None
-        self.RegionIds = None
 
 
     def _deserialize(self, params):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
-        self.InstanceId = params.get("InstanceId")
+        self.RedisId = params.get("RedisId")
+        self.RedisName = params.get("RedisName")
         self.OrderBy = params.get("OrderBy")
         self.OrderType = params.get("OrderType")
         self.VpcIds = params.get("VpcIds")
+        self.UnVpcIds = params.get("UnVpcIds")
         self.SubnetIds = params.get("SubnetIds")
+        self.UnSubnetIds = params.get("UnSubnetIds")
         self.ProjectIds = params.get("ProjectIds")
-        self.SearchKey = params.get("SearchKey")
-        self.InstanceName = params.get("InstanceName")
-        self.UniqVpcIds = params.get("UniqVpcIds")
-        self.UniqSubnetIds = params.get("UniqSubnetIds")
-        self.RegionIds = params.get("RegionIds")
 
 
-class DescribeInstancesResponse(AbstractModel):
-    """DescribeInstances返回参数结构体
+class DescribeRedisResponse(AbstractModel):
+    """DescribeRedis返回参数结构体
 
     """
 
@@ -386,56 +470,60 @@ class DescribeInstancesResponse(AbstractModel):
         """
         :param TotalCount: 实例数
         :type TotalCount: int
-        :param InstanceSet: 实例详细信息列表
-        :type InstanceSet: list of InstanceSet
+        :param RedisSets: RedisSet数组
+        :type RedisSets: list of RedisSet
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
-        self.InstanceSet = None
+        self.RedisSets = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
-        if params.get("InstanceSet") is not None:
-            self.InstanceSet = []
-            for item in params.get("InstanceSet"):
-                obj = InstanceSet()
+        if params.get("RedisSets") is not None:
+            self.RedisSets = []
+            for item in params.get("RedisSets"):
+                obj = RedisSet()
                 obj._deserialize(item)
-                self.InstanceSet.append(obj)
+                self.RedisSets.append(obj)
         self.RequestId = params.get("RequestId")
 
 
-class DescribeProductInfoRequest(AbstractModel):
-    """DescribeProductInfo请求参数结构体
+class DescribeRegionsRequest(AbstractModel):
+    """DescribeRegions请求参数结构体
 
     """
 
 
-class DescribeProductInfoResponse(AbstractModel):
-    """DescribeProductInfo返回参数结构体
+class DescribeRegionsResponse(AbstractModel):
+    """DescribeRegions返回参数结构体
 
     """
 
     def __init__(self):
         """
-        :param RegionSet: 地域售卖信息
-        :type RegionSet: list of RegionConf
+        :param RegionSets: 地域列表。
+        :type RegionSets: list of RedisRegion
+        :param TotalCount: 地域数量。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RegionSet = None
+        self.RegionSets = None
+        self.TotalCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("RegionSet") is not None:
-            self.RegionSet = []
-            for item in params.get("RegionSet"):
-                obj = RegionConf()
+        if params.get("RegionSets") is not None:
+            self.RegionSets = []
+            for item in params.get("RegionSets"):
+                obj = RedisRegion()
                 obj._deserialize(item)
-                self.RegionSet.append(obj)
+                self.RegionSets.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -463,135 +551,451 @@ class DescribeTaskInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态preparing:待执行，running：执行中，succeed：成功，failed：失败，error 执行出错
-        :type Status: str
-        :param StartTime: 任务开始时间
-        :type StartTime: str
-        :param TaskType: 任务类型
-        :type TaskType: str
-        :param InstanceId: 实例的ID
-        :type InstanceId: str
-        :param TaskMessage: 任务信息，错误时显示错误信息。执行中与成功则为空
-        :type TaskMessage: str
+        :param Status: 任务状态0:待执行，1：执行中，2：成功，3：失败，-1 执行出错
+        :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Status = None
-        self.StartTime = None
-        self.TaskType = None
-        self.InstanceId = None
-        self.TaskMessage = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
-        self.StartTime = params.get("StartTime")
-        self.TaskType = params.get("TaskType")
-        self.InstanceId = params.get("InstanceId")
-        self.TaskMessage = params.get("TaskMessage")
         self.RequestId = params.get("RequestId")
 
 
-class InstanceSet(AbstractModel):
-    """实例详细信息列表
+class ExportRedisBackupRequest(AbstractModel):
+    """ExportRedisBackup请求参数结构体
 
     """
 
     def __init__(self):
         """
-        :param InstanceName: 实例名称
-        :type InstanceName: str
-        :param InstanceId: 实例Id
-        :type InstanceId: str
-        :param Appid: 用户的Appid
-        :type Appid: int
-        :param ProjectId: 项目Id
-        :type ProjectId: int
-        :param RegionId: 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
-        :type RegionId: int
-        :param ZoneId: 区域id
+        :param RedisId: 待操作的实例ID，可通过 DescribeRedis 接口返回值中的 redisId 获取。
+        :type RedisId: str
+        :param BackupId: 备份ID，可通过 GetRedisBackupList 接口返回值中的 backupId 获取。
+        :type BackupId: str
+        """
+        self.RedisId = None
+        self.BackupId = None
+
+
+    def _deserialize(self, params):
+        self.RedisId = params.get("RedisId")
+        self.BackupId = params.get("BackupId")
+
+
+class ExportRedisBackupResponse(AbstractModel):
+    """ExportRedisBackup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class GetRedisBackupListRequest(AbstractModel):
+    """GetRedisBackupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 分页大小。
+        :type Limit: int
+        :param Offset: 当前页码，默认为0。 查询接口中单次查询一般都有一个默认最大返回记录数，要遍历所有资源，需要使用 limit，offset进行分页查询；例如查询第110~149 这40条记录，则可以设置 offset=110 limit=40。
+        :type Offset: int
+        :param RedisId: 待操作的实例ID，可通过 DescribeRedis 接口返回值中的 redisId 获取。
+        :type RedisId: str
+        :param BeginTime: 开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
+        :type BeginTime: str
+        :param EndTime: 结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
+        :type EndTime: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.RedisId = None
+        self.BeginTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.RedisId = params.get("RedisId")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+
+
+class GetRedisBackupListResponse(AbstractModel):
+    """GetRedisBackupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 备份总数
+        :type TotalCount: int
+        :param RedisBackupSet: 实例的备份数组
+        :type RedisBackupSet: list of RedisBackupSet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RedisBackupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RedisBackupSet") is not None:
+            self.RedisBackupSet = []
+            for item in params.get("RedisBackupSet"):
+                obj = RedisBackupSet()
+                obj._deserialize(item)
+                self.RedisBackupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetRedisPerformanceRequest(AbstractModel):
+    """GetRedisPerformance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RedisIds: 实例ID列表
+        :type RedisIds: list of str
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        """
+        self.RedisIds = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.RedisIds = params.get("RedisIds")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class GetRedisPerformanceResponse(AbstractModel):
+    """GetRedisPerformance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class GetRedisSlowLogListRequest(AbstractModel):
+    """GetRedisSlowLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 页面大小
+        :type Limit: int
+        :param Offset: 当前页码
+        :type Offset: int
+        :param RedisId: 实例ID
+        :type RedisId: str
+        :param BeginTime: 开始时间
+        :type BeginTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param QueryMaxTime: 慢查询阈值，单位微秒
+        :type QueryMaxTime: int
+        """
+        self.Limit = None
+        self.Offset = None
+        self.RedisId = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.QueryMaxTime = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.RedisId = params.get("RedisId")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.QueryMaxTime = params.get("QueryMaxTime")
+
+
+class GetRedisSlowLogListResponse(AbstractModel):
+    """GetRedisSlowLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 慢日志个数
+        :type TotalCount: int
+        :param SlowLogs: 慢查询日志数组
+        :type SlowLogs: list of SlowlogDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SlowLogs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SlowLogs") is not None:
+            self.SlowLogs = []
+            for item in params.get("SlowLogs"):
+                obj = SlowlogDetail()
+                obj._deserialize(item)
+                self.SlowLogs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetRedisTaskListRequest(AbstractModel):
+    """GetRedisTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 分页大小
+        :type Limit: int
+        :param Offset: 当前页码，默认为0。 查询接口中单次查询一般都有一个默认最大返回记录数，要遍历所有资源，需要使用 limit，offset进行分页查询；例如查询第110~149 这40条记录，则可以设置 offset=110 limit=40。
+        :type Offset: int
+        :param RedisId: 实例ID, 可通过 DescribeRedis 接口返回值中的 redisId 获取，支持按照实例ID筛选任务。
+        :type RedisId: str
+        :param RedisName: 实例名称，可通过 DescribeRedis 接口返回值中的 redisName 获取，支持按照实例名称筛选任务。
+        :type RedisName: str
+        :param BeginTime: 开始时间，格式如：2017-02-08 16:46:34。 查询在 [beginTime, endTime] 时间段内提交的任务列表。
+        :type BeginTime: str
+        :param EndTime: 结束时间，格式如：2017-02-08 19:09:26。 查询在 [beginTime, endTime] 时间段内提交的任务列表。
+        :type EndTime: str
+        :param TaskStatus: 一个或者多个任务状态，n表示从0开始的数组下标。 支持按照任务状态筛选任务。 任务状态定义为
+0：待执行;
+1：执行中;
+2：成功;
+3：失败;
+-1：执行出错
+        :type TaskStatus: int
+        :param TaskTypes: 一个或者多个任务类型，n表示从0开始的数组下标。 支持按照任务类型筛选。 任务类型定义为 :
+'001'：task_newInstance：新建实例                                                                                                                                                                                                           
+'002'：task_resizeInstance：升级实例的任务
+'004'：task_cleanInstance：清空实例的任务；
+'006'：task_deleteInstance：删除实例
+'007'：task_setPassword'：设置密码
+'008'：task_importRdb：导入Rdb的任务；
+'009'：task_exportBackup：导出备份的任务；
+'010'：task_restoreBackup：恢复实例的任务；
+'011'：task_restoreStream：回档实例的任务（集群版实例可回档3天内任意时间点，但是，最近10分钟的数据不可回档）；
+'012'：task_backupInstance：备份实例的任务；
+        :type TaskTypes: list of int non-negative
+        """
+        self.Limit = None
+        self.Offset = None
+        self.RedisId = None
+        self.RedisName = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.TaskStatus = None
+        self.TaskTypes = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.RedisId = params.get("RedisId")
+        self.RedisName = params.get("RedisName")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.TaskStatus = params.get("TaskStatus")
+        self.TaskTypes = params.get("TaskTypes")
+
+
+class GetRedisTaskListResponse(AbstractModel):
+    """GetRedisTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 任务个数
+        :type TotalCount: int
+        :param RedisTaskSets: 任务详情数组
+        :type RedisTaskSets: list of TaskInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RedisTaskSets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RedisTaskSets") is not None:
+            self.RedisTaskSets = []
+            for item in params.get("RedisTaskSets"):
+                obj = TaskInfo()
+                obj._deserialize(item)
+                self.RedisTaskSets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GoodsDetail(AbstractModel):
+    """商品详情
+
+    """
+
+    def __init__(self):
+        """
+        :param MemSize: 实例容量， 单位:MB
+        :type MemSize: int
+        :param TimeSpan: 购买时长， 单位以：timeUnit为准
+        :type TimeSpan: int
+        :param TimeUnit: 购买时长单位， m- 月， d - 天
+        :type TimeUnit: int
+        :param RedisIds: 关联的redisId列表
+        :type RedisIds: list of str
+        :param CurDeadline: 续费前，实例到期时间
+        :type CurDeadline: str
+        """
+        self.MemSize = None
+        self.TimeSpan = None
+        self.TimeUnit = None
+        self.RedisIds = None
+        self.CurDeadline = None
+
+
+    def _deserialize(self, params):
+        self.MemSize = params.get("MemSize")
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        self.RedisIds = params.get("RedisIds")
+        self.CurDeadline = params.get("CurDeadline")
+
+
+class InquiryRedisPriceRequest(AbstractModel):
+    """InquiryRedisPrice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ZoneId: 实例所属可用区, 取值以查询售卖可用区返回值为准
         :type ZoneId: int
-        :param VpcId: vpc网络id 如：75101
-        :type VpcId: int
-        :param SubnetId: vpc网络下子网id 如：46315
-        :type SubnetId: int
-        :param Status: 实例当前状态，0：待初始化；1：实例在流程中；2：实例运行中；-2：实例已隔离；-3：实例待删除
-        :type Status: int
-        :param WanIp: 实例vip
-        :type WanIp: str
-        :param Port: 实例端口号
-        :type Port: int
-        :param Createtime: 实例创建时间
-        :type Createtime: str
-        :param Size: 实例容量大小，单位：MB
-        :type Size: float
-        :param SizeUsed: 实例当前已使用容量，单位：MB
-        :type SizeUsed: float
-        :param Type: 实例类型，1：Redis2.8集群版；2：Redis2.8主从版；3：CKV主从版（Redis3.2）；4：CKV集群版（Redis3.2）；5：Redis2.8单机版；7：Redis4.0集群版；
-        :type Type: int
-        :param AutoRenewFlag: 实例是否设置自动续费标识，1：设置自动续费；0：未设置自动续费
-        :type AutoRenewFlag: int
-        :param DeadlineTime: 实例到期时间
-        :type DeadlineTime: str
-        :param Engine: 引擎：社区版Redis、腾讯云CKV
-        :type Engine: str
-        :param ProductType: 产品类型：Redis2.8集群版、Redis2.8主从版、Redis3.2主从版（CKV主从版）、Redis3.2集群版（CKV集群版）、Redis2.8单机版、Redis4.0集群版
-        :type ProductType: str
-        :param UniqVpcId: vpc网络id 如：vpc-fk33jsf43kgv
-        :type UniqVpcId: str
-        :param UniqSubnetId: vpc网络下子网id 如：subnet-fd3j6l35mm0
-        :type UniqSubnetId: str
+        :param TypeId: 实例类型：1 – 集群版，2 – 主从版
+        :type TypeId: int
+        :param MemSize: 容量大小, 1024的整数倍，单位：MB， 大小限制以查询售卖规格接口返回为准
+        :type MemSize: int
+        :param GoodsNum: 实例数量，数量限制以查询售卖规格接口返回为准
+        :type GoodsNum: int
+        :param Period: 购买或续费时长, 单位：月， 取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
+        :type Period: int
         :param BillingMode: 计费模式：0-按量计费，1-包年包月
         :type BillingMode: int
         """
-        self.InstanceName = None
-        self.InstanceId = None
-        self.Appid = None
-        self.ProjectId = None
-        self.RegionId = None
         self.ZoneId = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.Status = None
-        self.WanIp = None
-        self.Port = None
-        self.Createtime = None
-        self.Size = None
-        self.SizeUsed = None
-        self.Type = None
-        self.AutoRenewFlag = None
-        self.DeadlineTime = None
-        self.Engine = None
-        self.ProductType = None
-        self.UniqVpcId = None
-        self.UniqSubnetId = None
+        self.TypeId = None
+        self.MemSize = None
+        self.GoodsNum = None
+        self.Period = None
         self.BillingMode = None
 
 
     def _deserialize(self, params):
-        self.InstanceName = params.get("InstanceName")
-        self.InstanceId = params.get("InstanceId")
-        self.Appid = params.get("Appid")
-        self.ProjectId = params.get("ProjectId")
-        self.RegionId = params.get("RegionId")
         self.ZoneId = params.get("ZoneId")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.Status = params.get("Status")
-        self.WanIp = params.get("WanIp")
-        self.Port = params.get("Port")
-        self.Createtime = params.get("Createtime")
-        self.Size = params.get("Size")
-        self.SizeUsed = params.get("SizeUsed")
-        self.Type = params.get("Type")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.DeadlineTime = params.get("DeadlineTime")
-        self.Engine = params.get("Engine")
-        self.ProductType = params.get("ProductType")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.TypeId = params.get("TypeId")
+        self.MemSize = params.get("MemSize")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Period = params.get("Period")
         self.BillingMode = params.get("BillingMode")
+
+
+class InquiryRedisPriceResponse(AbstractModel):
+    """InquiryRedisPrice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 购买或者续费实例的总费用，单位：分。
+        :type Price: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Price = params.get("Price")
+        self.RequestId = params.get("RequestId")
+
+
+class IsolateRedisInstanceRequest(AbstractModel):
+    """IsolateRedisInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RedisId: 实例
+        :type RedisId: str
+        """
+        self.RedisId = None
+
+
+    def _deserialize(self, params):
+        self.RedisId = params.get("RedisId")
+
+
+class IsolateRedisInstanceResponse(AbstractModel):
+    """IsolateRedisInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class ManualBackupInstanceRequest(AbstractModel):
@@ -601,17 +1005,17 @@ class ManualBackupInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 待操作的实例ID，可通过 DescribeInstance接口返回值中的 InstanceId 获取。
-        :type InstanceId: str
+        :param RedisId: 待操作的实例ID，可通过 DescribeRedis 接口返回值中的 redisId 获取。
+        :type RedisId: str
         :param Remark: 备份的备注信息
         :type Remark: str
         """
-        self.InstanceId = None
+        self.RedisId = None
         self.Remark = None
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self.RedisId = params.get("RedisId")
         self.Remark = params.get("Remark")
 
 
@@ -636,137 +1040,29 @@ class ManualBackupInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModfiyInstancePasswordRequest(AbstractModel):
-    """ModfiyInstancePassword请求参数结构体
+class ModifyRedisNameRequest(AbstractModel):
+    """ModifyRedisName请求参数结构体
 
     """
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        :param OldPassword: 实例旧密码
-        :type OldPassword: str
-        :param Password: 实例新密码
-        :type Password: str
+        :param RedisId: 实例id
+        :type RedisId: str
+        :param RedisName: 实例名称
+        :type RedisName: str
         """
-        self.InstanceId = None
-        self.OldPassword = None
-        self.Password = None
+        self.RedisId = None
+        self.RedisName = None
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.OldPassword = params.get("OldPassword")
-        self.Password = params.get("Password")
+        self.RedisId = params.get("RedisId")
+        self.RedisName = params.get("RedisName")
 
 
-class ModfiyInstancePasswordResponse(AbstractModel):
-    """ModfiyInstancePassword返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TaskId: 任务ID
-        :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TaskId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyAutoBackupConfigRequest(AbstractModel):
-    """ModifyAutoBackupConfig请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        :param WeekDays: 日期 Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday
-        :type WeekDays: list of str
-        :param TimePeriod: 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
-        :type TimePeriod: str
-        :param AutoBackupType: 自动备份类型： 1 “定时回档”
-        :type AutoBackupType: int
-        """
-        self.InstanceId = None
-        self.WeekDays = None
-        self.TimePeriod = None
-        self.AutoBackupType = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.WeekDays = params.get("WeekDays")
-        self.TimePeriod = params.get("TimePeriod")
-        self.AutoBackupType = params.get("AutoBackupType")
-
-
-class ModifyAutoBackupConfigResponse(AbstractModel):
-    """ModifyAutoBackupConfig返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param AutoBackupType: 自动备份类型： 1 “定时回档”
-        :type AutoBackupType: int
-        :param WeekDays: 日期Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
-        :type WeekDays: list of str
-        :param TimePeriod: 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
-        :type TimePeriod: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.AutoBackupType = None
-        self.WeekDays = None
-        self.TimePeriod = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.AutoBackupType = params.get("AutoBackupType")
-        self.WeekDays = params.get("WeekDays")
-        self.TimePeriod = params.get("TimePeriod")
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyInstanceRequest(AbstractModel):
-    """ModifyInstance请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Operation: 修改实例操作，如填写：rename（表示实例重命名）
-        :type Operation: str
-        :param InstanceId: 实例Id
-        :type InstanceId: str
-        :param InstanceName: 实例的新名称
-        :type InstanceName: str
-        """
-        self.Operation = None
-        self.InstanceId = None
-        self.InstanceName = None
-
-
-    def _deserialize(self, params):
-        self.Operation = params.get("Operation")
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-
-
-class ModifyInstanceResponse(AbstractModel):
-    """ModifyInstance返回参数结构体
+class ModifyRedisNameResponse(AbstractModel):
+    """ModifyRedisName返回参数结构体
 
     """
 
@@ -782,69 +1078,88 @@ class ModifyInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ProductConf(AbstractModel):
-    """产品信息
+class ModifyRedisParamsRequest(AbstractModel):
+    """ModifyRedisParams请求参数结构体
 
     """
 
     def __init__(self):
         """
-        :param Type: 产品类型，2-Redis主从版，3-CKV主从版，4-CKV集群版，5-Redis单机版，7-Redis集群版
-        :type Type: int
-        :param TypeName: 产品名称，Redis主从版，CKV主从版，CKV集群版，Redis单机版，Redis集群版
-        :type TypeName: str
-        :param MinBuyNum: 购买时的最小数量
-        :type MinBuyNum: int
-        :param MaxBuyNum: 购买时的最大数量
-        :type MaxBuyNum: int
-        :param Saleout: 产品是否售罄
-        :type Saleout: bool
-        :param Engine: 产品引擎，腾讯云CKV或者社区版Redis
-        :type Engine: str
-        :param Version: 兼容版本，Redis-2.8，Redis-3.2，Redis-4.0
-        :type Version: str
-        :param TotalSize: 规格总大小，单位G
-        :type TotalSize: list of str
-        :param ShardSize: 每个分片大小，单位G
-        :type ShardSize: list of str
-        :param ReplicaNum: 副本数量
-        :type ReplicaNum: list of str
-        :param ShardNum: 分片数量
-        :type ShardNum: list of str
-        :param PayMode: 支持的计费模式，1-包年包月，0-按量计费
-        :type PayMode: str
-        :param EnableRepicaReadOnly: 是否支持副本只读
-        :type EnableRepicaReadOnly: bool
+        :param RedisId: 实例id
+        :type RedisId: str
+        :param ParamNameList: 参数名称列表
+        :type ParamNameList: list of str
+        :param ParamValueList: 参数值列表
+        :type ParamValueList: list of str
         """
-        self.Type = None
-        self.TypeName = None
-        self.MinBuyNum = None
-        self.MaxBuyNum = None
-        self.Saleout = None
-        self.Engine = None
-        self.Version = None
-        self.TotalSize = None
-        self.ShardSize = None
-        self.ReplicaNum = None
-        self.ShardNum = None
-        self.PayMode = None
-        self.EnableRepicaReadOnly = None
+        self.RedisId = None
+        self.ParamNameList = None
+        self.ParamValueList = None
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.TypeName = params.get("TypeName")
-        self.MinBuyNum = params.get("MinBuyNum")
-        self.MaxBuyNum = params.get("MaxBuyNum")
-        self.Saleout = params.get("Saleout")
-        self.Engine = params.get("Engine")
-        self.Version = params.get("Version")
-        self.TotalSize = params.get("TotalSize")
-        self.ShardSize = params.get("ShardSize")
-        self.ReplicaNum = params.get("ReplicaNum")
-        self.ShardNum = params.get("ShardNum")
-        self.PayMode = params.get("PayMode")
-        self.EnableRepicaReadOnly = params.get("EnableRepicaReadOnly")
+        self.RedisId = params.get("RedisId")
+        self.ParamNameList = params.get("ParamNameList")
+        self.ParamValueList = params.get("ParamValueList")
+
+
+class ModifyRedisParamsResponse(AbstractModel):
+    """ModifyRedisParams返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Changed: true:设置成功；false:设置失败
+        :type Changed: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Changed = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Changed = params.get("Changed")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRedisProjectRequest(AbstractModel):
+    """ModifyRedisProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RedisIds: 可通过DescribeRedis接口查询实例Id组成的数组，数组下标从0开始
+        :type RedisIds: list of str
+        :param ProjectId: 项目ID,取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准
+        :type ProjectId: int
+        """
+        self.RedisIds = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.RedisIds = params.get("RedisIds")
+        self.ProjectId = params.get("ProjectId")
+
+
+class ModifyRedisProjectResponse(AbstractModel):
+    """ModifyRedisProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class RedisBackupSet(AbstractModel):
@@ -855,12 +1170,12 @@ class RedisBackupSet(AbstractModel):
     def __init__(self):
         """
         :param StartTime: 开始备份的时间
-        :type StartTime: str
+        :type StartTime: list of str
         :param BackupId: 备份ID
-        :type BackupId: str
+        :type BackupId: list of str
         :param BackupType: 备份类型。 manualBackupInstance：用户发起的手动备份； systemBackupInstance：凌晨系统发起的备份
-        :type BackupType: str
-        :param Status: 备份状态。  1:"备份被其它流程锁定";  2:"备份正常，没有被任何流程锁定";  -1:"备份已过期"； 3:"备份正在被导出";  4:"备份导出成功"
+        :type BackupType: list of str
+        :param Status: 备份状态。  1:
         :type Status: int
         :param Remark: 备份的备注信息
         :type Remark: str
@@ -884,46 +1199,157 @@ class RedisBackupSet(AbstractModel):
         self.Locked = params.get("Locked")
 
 
-class RegionConf(AbstractModel):
-    """地域信息
+class RedisRegion(AbstractModel):
+    """地域列表
 
     """
 
     def __init__(self):
         """
-        :param RegionId: 地域ID
-        :type RegionId: str
-        :param RegionName: 地域名称
-        :type RegionName: str
-        :param RegionShortName: 地域简称
-        :type RegionShortName: str
-        :param Area: 地域所在大区名称
-        :type Area: str
-        :param ZoneSet: 可用区信息
-        :type ZoneSet: list of ZoneCapacityConf
+        :param RegionId: 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）
+        :type RegionId: int
+        :param RegionCityNameEn: 地域英文名
+        :type RegionCityNameEn: str
+        :param RegionCityNameCn: 地域中文名
+        :type RegionCityNameCn: str
+        :param RegionCityNameLong: 地域完整信息
+        :type RegionCityNameLong: str
         """
         self.RegionId = None
-        self.RegionName = None
-        self.RegionShortName = None
-        self.Area = None
-        self.ZoneSet = None
+        self.RegionCityNameEn = None
+        self.RegionCityNameCn = None
+        self.RegionCityNameLong = None
 
 
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
-        self.RegionName = params.get("RegionName")
-        self.RegionShortName = params.get("RegionShortName")
-        self.Area = params.get("Area")
-        if params.get("ZoneSet") is not None:
-            self.ZoneSet = []
-            for item in params.get("ZoneSet"):
-                obj = ZoneCapacityConf()
-                obj._deserialize(item)
-                self.ZoneSet.append(obj)
+        self.RegionCityNameEn = params.get("RegionCityNameEn")
+        self.RegionCityNameCn = params.get("RegionCityNameCn")
+        self.RegionCityNameLong = params.get("RegionCityNameLong")
 
 
-class RenewInstanceRequest(AbstractModel):
-    """RenewInstance请求参数结构体
+class RedisSet(AbstractModel):
+    """redisSet列表
+
+    """
+
+    def __init__(self):
+        """
+        :param RedisName: 实例名称
+        :type RedisName: str
+        :param RedisId: 实例串号
+        :type RedisId: str
+        :param Appid: appid
+        :type Appid: int
+        :param ProjectId: 项目id
+        :type ProjectId: int
+        :param RegionId: 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）
+        :type RegionId: int
+        :param ZoneId: 区域id
+        :type ZoneId: int
+        :param VpcId: vpc网络id，不推荐使用
+        :type VpcId: int
+        :param UnVpcId: vpc网络id，推荐使用
+        :type UnVpcId: str
+        :param SubnetId: vpc网络下子网id，不推荐使用
+        :type SubnetId: int
+        :param UnSubnetId: vpc网络下子网id，推荐使用
+        :type UnSubnetId: str
+        :param Status: 实例当前状态，0：待初始化；1：实例在流程中；2：实例运行中；-2：实例已隔离
+        :type Status: int
+        :param StatusDesc: 实例状态描述
+        :type StatusDesc: str
+        :param WanIp: 实例vip
+        :type WanIp: str
+        :param Port: 实例端口号
+        :type Port: int
+        :param Createtime: 实例创建时间
+        :type Createtime: str
+        :param Size: 实例容量大小，单位：MB
+        :type Size: str
+        :param SizeUsed: 实例当前已使用容量，单位：MB
+        :type SizeUsed: int
+        :param TypeId: 实例类型，1：集群版；2：主从版
+        :type TypeId: int
+        :param TypeIddesc: 实例类型描述
+        :type TypeIddesc: str
+        :param AutoRenewFlag: 实例是否设置自动续费标识，1：设置自动续费；0：未设置自动续费
+        :type AutoRenewFlag: int
+        :param DeadlineTime: 实例到期时间
+        :type DeadlineTime: str
+        """
+        self.RedisName = None
+        self.RedisId = None
+        self.Appid = None
+        self.ProjectId = None
+        self.RegionId = None
+        self.ZoneId = None
+        self.VpcId = None
+        self.UnVpcId = None
+        self.SubnetId = None
+        self.UnSubnetId = None
+        self.Status = None
+        self.StatusDesc = None
+        self.WanIp = None
+        self.Port = None
+        self.Createtime = None
+        self.Size = None
+        self.SizeUsed = None
+        self.TypeId = None
+        self.TypeIddesc = None
+        self.AutoRenewFlag = None
+        self.DeadlineTime = None
+
+
+    def _deserialize(self, params):
+        self.RedisName = params.get("RedisName")
+        self.RedisId = params.get("RedisId")
+        self.Appid = params.get("Appid")
+        self.ProjectId = params.get("ProjectId")
+        self.RegionId = params.get("RegionId")
+        self.ZoneId = params.get("ZoneId")
+        self.VpcId = params.get("VpcId")
+        self.UnVpcId = params.get("UnVpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.UnSubnetId = params.get("UnSubnetId")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.WanIp = params.get("WanIp")
+        self.Port = params.get("Port")
+        self.Createtime = params.get("Createtime")
+        self.Size = params.get("Size")
+        self.SizeUsed = params.get("SizeUsed")
+        self.TypeId = params.get("TypeId")
+        self.TypeIddesc = params.get("TypeIddesc")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.DeadlineTime = params.get("DeadlineTime")
+
+
+class RegionConf(AbstractModel):
+    """地域配置
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionId: 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）
+        :type RegionId: str
+        :param Zones: 地域包含的区域
+        :type Zones: :class:`tencentcloud.redis.v20180412.models.ZoneCapacity`
+        """
+        self.RegionId = None
+        self.Zones = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        if params.get("Zones") is not None:
+            self.Zones = ZoneCapacity()
+            self.Zones._deserialize(params.get("Zones"))
+
+
+class RenewRedisRequest(AbstractModel):
+    """RenewRedis请求参数结构体
 
     """
 
@@ -931,20 +1357,20 @@ class RenewInstanceRequest(AbstractModel):
         """
         :param Period: 购买时长，单位：月
         :type Period: int
-        :param InstanceId: 实例ID
-        :type InstanceId: str
+        :param RedisId: 实例串号
+        :type RedisId: str
         """
         self.Period = None
-        self.InstanceId = None
+        self.RedisId = None
 
 
     def _deserialize(self, params):
         self.Period = params.get("Period")
-        self.InstanceId = params.get("InstanceId")
+        self.RedisId = params.get("RedisId")
 
 
-class RenewInstanceResponse(AbstractModel):
-    """RenewInstance返回参数结构体
+class RenewRedisResponse(AbstractModel):
+    """RenewRedis返回参数结构体
 
     """
 
@@ -964,35 +1390,77 @@ class RenewInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ResetPasswordRequest(AbstractModel):
-    """ResetPassword请求参数结构体
+class ResetRedisPasswordRequest(AbstractModel):
+    """ResetRedisPassword请求参数结构体
 
     """
 
     def __init__(self):
         """
-        :param Password: 重置的密码
+        :param RedisId: 待操作的实例ID，可通过 DescribeRedis 接口返回值中的 redisId 获取。
+        :type RedisId: str
+        :param Password: 实例新密码，密码规则： 长度为8-16个字符；至少包含字母、数字和字符（!@#%^()）中的两种
         :type Password: str
-        :param InstanceId: Redis实例ID
-        :type InstanceId: str
         """
+        self.RedisId = None
         self.Password = None
-        self.InstanceId = None
 
 
     def _deserialize(self, params):
+        self.RedisId = params.get("RedisId")
         self.Password = params.get("Password")
-        self.InstanceId = params.get("InstanceId")
 
 
-class ResetPasswordResponse(AbstractModel):
-    """ResetPassword返回参数结构体
+class ResetRedisPasswordResponse(AbstractModel):
+    """ResetRedisPassword返回参数结构体
 
     """
 
     def __init__(self):
         """
-        :param TaskId: 任务ID
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class RestoreInstanceRequest(AbstractModel):
+    """RestoreInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RedisId: 待操作的实例ID，可通过 DescribeRedis 接口返回值中的 redisId 获取。
+        :type RedisId: str
+        :param Password: 实例密码，恢复实例时，需要校验实例密码
+        :type Password: str
+        :param BackupId: 备份ID，可通过 GetRedisBackupList 接口返回值中的 backupId 获取
+        :type BackupId: str
+        """
+        self.RedisId = None
+        self.Password = None
+        self.BackupId = None
+
+
+    def _deserialize(self, params):
+        self.RedisId = params.get("RedisId")
+        self.Password = params.get("Password")
+        self.BackupId = params.get("BackupId")
+
+
+class RestoreInstanceResponse(AbstractModel):
+    """RestoreInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID，可通过 DescribeTaskInfo 接口查询任务执行状态
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1006,7 +1474,153 @@ class ResetPasswordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class TradeDealDetail(AbstractModel):
+class SetRedisAutoRenewRequest(AbstractModel):
+    """SetRedisAutoRenew请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RedisIds: 实例 ID 组成的数组，数组下标从0开始
+        :type RedisIds: list of str
+        :param IsAutoRenew: 设置自动续费标识，0 - 不设置自动续费，实例到期会通知；1 - 设置自动续费，到期会自动续费；2 - 到期不续费也不通知
+        :type IsAutoRenew: int
+        """
+        self.RedisIds = None
+        self.IsAutoRenew = None
+
+
+    def _deserialize(self, params):
+        self.RedisIds = params.get("RedisIds")
+        self.IsAutoRenew = params.get("IsAutoRenew")
+
+
+class SetRedisAutoRenewResponse(AbstractModel):
+    """SetRedisAutoRenew返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SlowlogDetail(AbstractModel):
+    """慢日志信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ExecTime: 执行时间
+        :type ExecTime: str
+        :param Duration: 执行持续时间
+        :type Duration: int
+        :param Command: 执行命令
+        :type Command: str
+        :param CmdLine: 执行整个命令
+        :type CmdLine: str
+        """
+        self.ExecTime = None
+        self.Duration = None
+        self.Command = None
+        self.CmdLine = None
+
+
+    def _deserialize(self, params):
+        self.ExecTime = params.get("ExecTime")
+        self.Duration = params.get("Duration")
+        self.Command = params.get("Command")
+        self.CmdLine = params.get("CmdLine")
+
+
+class TaskInfo(AbstractModel):
+    """任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 任务的提交时间，格式如： 2017-02-10 16:56:18
+        :type StartTime: str
+        :param TaskType: 任务类型定义为 : '001'：task_newInstance：新建实例                                                                                                                                                                                                            '002'：task_resizeInstance：升级实例的任务 '004'：task_cleanInstance：清空实例的任务； '006'：task_deleteInstance：删除实例 '007'：task_setPassword'：设置密码 '008'：task_importRdb：导入Rdb的任务； '009'：task_exportBackup：导出备份的任务； '010'：task_restoreBackup：恢复实例的任务； '011'：task_restoreStream：回档实例的任务（集群版实例可回档3天内任意时间点，但是，最近10分钟的数据不可回档）； '012'：task_backupInstance：备份实例的任务；
+        :type TaskType: str
+        :param RedisName: 实例名称
+        :type RedisName: str
+        :param RedisId: 实例ID
+        :type RedisId: str
+        :param ProjectId: 实例所属的项目ID
+        :type ProjectId: int
+        :param Status: 任务执行状态，0：待执行；1：执行中；2：成功；3：失败；-1 执行出错
+        :type Status: int
+        :param Progress: 任务执行进度，0：未完成；1：已完成
+        :type Progress: float
+        :param TaskID: 任务流ID，用于查询任务详情。
+        :type TaskID: int
+        """
+        self.StartTime = None
+        self.TaskType = None
+        self.RedisName = None
+        self.RedisId = None
+        self.ProjectId = None
+        self.Status = None
+        self.Progress = None
+        self.TaskID = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.TaskType = params.get("TaskType")
+        self.RedisName = params.get("RedisName")
+        self.RedisId = params.get("RedisId")
+        self.ProjectId = params.get("ProjectId")
+        self.Status = params.get("Status")
+        self.Progress = params.get("Progress")
+        self.TaskID = params.get("TaskID")
+
+
+class TestRequest(AbstractModel):
+    """Test请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserType: 无
+        :type UserType: int
+        """
+        self.UserType = None
+
+
+    def _deserialize(self, params):
+        self.UserType = params.get("UserType")
+
+
+class TestResponse(AbstractModel):
+    """Test返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class TradeDealDetails(AbstractModel):
     """订单交易信息
 
     """
@@ -1035,8 +1649,8 @@ class TradeDealDetail(AbstractModel):
         :type Description: str
         :param Price: 订单实际总价，单位：分
         :type Price: int
-        :param InstanceIds: 实例ID
-        :type InstanceIds: list of str
+        :param GoodsDetail: 返回的数组，不同订单的goodsDetail不相同
+        :type GoodsDetail: list of GoodsDetail
         """
         self.DealId = None
         self.DealName = None
@@ -1049,7 +1663,7 @@ class TradeDealDetail(AbstractModel):
         self.Status = None
         self.Description = None
         self.Price = None
-        self.InstanceIds = None
+        self.GoodsDetail = None
 
 
     def _deserialize(self, params):
@@ -1064,40 +1678,83 @@ class TradeDealDetail(AbstractModel):
         self.Status = params.get("Status")
         self.Description = params.get("Description")
         self.Price = params.get("Price")
-        self.InstanceIds = params.get("InstanceIds")
+        if params.get("GoodsDetail") is not None:
+            self.GoodsDetail = []
+            for item in params.get("GoodsDetail"):
+                obj = GoodsDetail()
+                obj._deserialize(item)
+                self.GoodsDetail.append(obj)
 
 
-class UpgradeInstanceRequest(AbstractModel):
-    """UpgradeInstance请求参数结构体
+class UpgradeRedisInquiryPriceRequest(AbstractModel):
+    """UpgradeRedisInquiryPrice请求参数结构体
 
     """
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id
-        :type InstanceId: str
-        :param MemSize: 分片大小 单位 MB
+        :param RedisId: 实例串号
+        :type RedisId: str
+        :param MemSize: 升级后的容量，1024的整数倍，单位：MB。升级后容量必须大于当前实例容量，大小限制以查询可售卖规格 为准
         :type MemSize: int
-        :param RedisShardNum: 分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
-        :type RedisShardNum: int
-        :param RedisReplicasNum: 副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
-        :type RedisReplicasNum: int
+        :param BillingMode: 计费模式：0-按量计费，1-包年包月
+        :type BillingMode: int
         """
-        self.InstanceId = None
+        self.RedisId = None
         self.MemSize = None
-        self.RedisShardNum = None
-        self.RedisReplicasNum = None
+        self.BillingMode = None
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self.RedisId = params.get("RedisId")
         self.MemSize = params.get("MemSize")
-        self.RedisShardNum = params.get("RedisShardNum")
-        self.RedisReplicasNum = params.get("RedisReplicasNum")
+        self.BillingMode = params.get("BillingMode")
 
 
-class UpgradeInstanceResponse(AbstractModel):
-    """UpgradeInstance返回参数结构体
+class UpgradeRedisInquiryPriceResponse(AbstractModel):
+    """UpgradeRedisInquiryPrice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 升级总费用，单位：分
+        :type Price: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Price = params.get("Price")
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeRedisRequest(AbstractModel):
+    """UpgradeRedis请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RedisId: 升级的实例Id
+        :type RedisId: str
+        :param MemSize: 规格 单位 MB, 计费侧GB
+        :type MemSize: int
+        """
+        self.RedisId = None
+        self.MemSize = None
+
+
+    def _deserialize(self, params):
+        self.RedisId = params.get("RedisId")
+        self.MemSize = params.get("MemSize")
+
+
+class UpgradeRedisResponse(AbstractModel):
+    """UpgradeRedis返回参数结构体
 
     """
 
@@ -1117,47 +1774,49 @@ class UpgradeInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ZoneCapacityConf(AbstractModel):
-    """可用区内产品信息
+class ZoneCapacity(AbstractModel):
+    """区域不同类型的Redis的容量
+    	Type		int64	`json:"Type"`			// 配置类型， 1 集群版， 2 单机版
+    	TypeName	string	`json:"TypeName"` 		// 类型名称： 集群版， 单机版
+    	MinMemSize 	int64 	`json:"MinMemSize"`		// 单位MB
+    	MaxMemSize 	int64 	`json:"MaxMemSize"`		// 单位MB
+    	MinBuyNum  	int64 	`json:"MinBuyNum"`
+    	MaxBuyNum  	int64 	`json:"MaxBuyNum"`
+    	Saleout		bool	`json:"Saleout"`        //是否售罄
 
     """
 
     def __init__(self):
         """
-        :param ZoneId: 可用区ID：如ap-guangzhou-3
-        :type ZoneId: str
-        :param ZoneName: 可用区名称
-        :type ZoneName: str
-        :param IsSaleout: 可用区是否售罄
-        :type IsSaleout: bool
-        :param IsDefault: 是否为默认可用区
-        :type IsDefault: bool
-        :param NetWorkType: 网络类型：basenet -- 基础网络；vpcnet -- VPC网络
-        :type NetWorkType: list of str
-        :param ProductSet: 可用区内产品规格等信息
-        :type ProductSet: list of ProductConf
-        :param OldZoneId: 可用区ID：如100003
-        :type OldZoneId: int
+        :param TypeName: 实例类型名称
+        :type TypeName: str
+        :param MinMemSize: 单个实例最小容量，单位:MB
+        :type MinMemSize: int
+        :param Type: 实例类型，1 – 集群版；2 – 主从版；3-新一代主从版
+        :type Type: int
+        :param Saleout: 是否售罄
+        :type Saleout: bool
+        :param MaxBuyNum: 单次购买的最小实例数
+        :type MaxBuyNum: int
+        :param MinBuyNum: 单次购买的最大实例数
+        :type MinBuyNum: int
+        :param MaxMemSize: 单个实例最大容量，单位:MB
+        :type MaxMemSize: int
         """
-        self.ZoneId = None
-        self.ZoneName = None
-        self.IsSaleout = None
-        self.IsDefault = None
-        self.NetWorkType = None
-        self.ProductSet = None
-        self.OldZoneId = None
+        self.TypeName = None
+        self.MinMemSize = None
+        self.Type = None
+        self.Saleout = None
+        self.MaxBuyNum = None
+        self.MinBuyNum = None
+        self.MaxMemSize = None
 
 
     def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.ZoneName = params.get("ZoneName")
-        self.IsSaleout = params.get("IsSaleout")
-        self.IsDefault = params.get("IsDefault")
-        self.NetWorkType = params.get("NetWorkType")
-        if params.get("ProductSet") is not None:
-            self.ProductSet = []
-            for item in params.get("ProductSet"):
-                obj = ProductConf()
-                obj._deserialize(item)
-                self.ProductSet.append(obj)
-        self.OldZoneId = params.get("OldZoneId")
+        self.TypeName = params.get("TypeName")
+        self.MinMemSize = params.get("MinMemSize")
+        self.Type = params.get("Type")
+        self.Saleout = params.get("Saleout")
+        self.MaxBuyNum = params.get("MaxBuyNum")
+        self.MinBuyNum = params.get("MinBuyNum")
+        self.MaxMemSize = params.get("MaxMemSize")

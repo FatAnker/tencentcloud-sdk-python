@@ -25,20 +25,48 @@ class RedisClient(AbstractClient):
     _endpoint = 'redis.tencentcloudapi.com'
 
 
-    def ClearInstance(self, request):
+    def Adderror(self, request):
+        """asdf
+
+        :param request: 调用Adderror所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.AdderrorRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.AdderrorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("Adderror", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AdderrorResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ClearRedis(self, request):
         """清空Redis实例的实例数据。
 
-        :param request: 调用ClearInstance所需参数的结构体。
-        :type request: :class:`tencentcloud.redis.v20180412.models.ClearInstanceRequest`
-        :rtype: :class:`tencentcloud.redis.v20180412.models.ClearInstanceResponse`
+        :param request: 调用ClearRedis所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.ClearRedisRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ClearRedisResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ClearInstance", params)
+            body = self.call("ClearRedis", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ClearInstanceResponse()
+                model = models.ClearRedisResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +81,20 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateInstances(self, request):
+    def CreateRedis(self, request):
         """创建redis实例
 
-        :param request: 调用CreateInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.redis.v20180412.models.CreateInstancesRequest`
-        :rtype: :class:`tencentcloud.redis.v20180412.models.CreateInstancesResponse`
+        :param request: 调用CreateRedis所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.CreateRedisRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.CreateRedisResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInstances", params)
+            body = self.call("CreateRedis", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateInstancesResponse()
+                model = models.CreateRedisResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +109,20 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAutoBackupConfig(self, request):
-        """获取备份配置
+    def CreateRedisHour(self, request):
+        """按量计费
 
-        :param request: 调用DescribeAutoBackupConfig所需参数的结构体。
-        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeAutoBackupConfigRequest`
-        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeAutoBackupConfigResponse`
+        :param request: 调用CreateRedisHour所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.CreateRedisHourRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.CreateRedisHourResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoBackupConfig", params)
+            body = self.call("CreateRedisHour", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAutoBackupConfigResponse()
+                model = models.CreateRedisHourResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,76 +137,20 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeInstanceBackups(self, request):
-        """查询 CRS 实例备份列表
-
-        :param request: 调用DescribeInstanceBackups所需参数的结构体。
-        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceBackupsRequest`
-        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceBackupsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeInstanceBackups", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeInstanceBackupsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeInstanceDealDetail(self, request):
-        """查询订单信息
-
-        :param request: 调用DescribeInstanceDealDetail所需参数的结构体。
-        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDealDetailRequest`
-        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDealDetailResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeInstanceDealDetail", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeInstanceDealDetailResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeInstances(self, request):
+    def DescribeRedis(self, request):
         """查询Redis实例列表
 
-        :param request: 调用DescribeInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstancesRequest`
-        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstancesResponse`
+        :param request: 调用DescribeRedis所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeRedisRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeRedisResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            body = self.call("DescribeRedis", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeInstancesResponse()
+                model = models.DescribeRedisResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,20 +165,104 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeProductInfo(self, request):
-        """本接口查询指定可用区和实例类型下 Redis 的售卖规格， 如果用户不在购买白名单中，将不能查询该可用区或该类型的售卖规格详情。申请购买某地域白名单可以提交工单
+    def DescribeRedisDealDetail(self, request):
+        """查询订单详情
 
-        :param request: 调用DescribeProductInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeProductInfoRequest`
-        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeProductInfoResponse`
+        :param request: 调用DescribeRedisDealDetail所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeRedisDealDetailRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeRedisDealDetailResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProductInfo", params)
+            body = self.call("DescribeRedisDealDetail", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeProductInfoResponse()
+                model = models.DescribeRedisDealDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRedisProduct(self, request):
+        """本接口查询指定可用区和实例类型下 CRS 的售卖规格， 如果用户不在购买白名单中，将不能查询该可用区或该类型的售卖规格详情。申请购买某地域白名单可以提交工单
+
+        :param request: 调用DescribeRedisProduct所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeRedisProductRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeRedisProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRedisProduct", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRedisProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRedisRegions(self, request):
+        """本接口 (DescribeRegions) 用于查询地域信息。
+
+        :param request: 调用DescribeRedisRegions所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeRedisRegionsRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeRedisRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRedisRegions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRedisRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRegions(self, request):
+        """本接口 (DescribeRegions) 用于查询地域信息。
+
+        :param request: 调用DescribeRegions所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeRegionsRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRegions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRegionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -249,8 +305,204 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExportRedisBackup(self, request):
+        """导出CRS实例备份
+
+        :param request: 调用ExportRedisBackup所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.ExportRedisBackupRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ExportRedisBackupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportRedisBackup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportRedisBackupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetRedisBackupList(self, request):
+        """查询 CRS 实例备份列表
+
+        :param request: 调用GetRedisBackupList所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.GetRedisBackupListRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.GetRedisBackupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetRedisBackupList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetRedisBackupListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetRedisPerformance(self, request):
+        """查看redis实例性能详情
+
+        :param request: 调用GetRedisPerformance所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.GetRedisPerformanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.GetRedisPerformanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetRedisPerformance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetRedisPerformanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetRedisSlowLogList(self, request):
+        """查询CRS实例慢查询日志列表
+
+        :param request: 调用GetRedisSlowLogList所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.GetRedisSlowLogListRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.GetRedisSlowLogListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetRedisSlowLogList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetRedisSlowLogListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetRedisTaskList(self, request):
+        """查询CRS实例的任务列表
+
+        :param request: 调用GetRedisTaskList所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.GetRedisTaskListRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.GetRedisTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetRedisTaskList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetRedisTaskListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquiryRedisPrice(self, request):
+        """本接口（InquiryRedisPrice）用于查询新购和续费实例价格， 查询升级实例的价格，请参考 查询升级实例价格 。
+
+        :param request: 调用InquiryRedisPrice所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.InquiryRedisPriceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.InquiryRedisPriceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryRedisPrice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryRedisPriceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def IsolateRedisInstance(self, request):
+        """隔离redis实例
+
+        :param request: 调用IsolateRedisInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.IsolateRedisInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.IsolateRedisInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("IsolateRedisInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.IsolateRedisInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ManualBackupInstance(self, request):
-        """手动备份Redis实例
+        """手动备份 CRS 实例
 
         :param request: 调用ManualBackupInstance所需参数的结构体。
         :type request: :class:`tencentcloud.redis.v20180412.models.ManualBackupInstanceRequest`
@@ -277,20 +529,20 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModfiyInstancePassword(self, request):
-        """修改redis密码
+    def ModifyRedisName(self, request):
+        """修改Redis实例名称
 
-        :param request: 调用ModfiyInstancePassword所需参数的结构体。
-        :type request: :class:`tencentcloud.redis.v20180412.models.ModfiyInstancePasswordRequest`
-        :rtype: :class:`tencentcloud.redis.v20180412.models.ModfiyInstancePasswordResponse`
+        :param request: 调用ModifyRedisName所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyRedisNameRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyRedisNameResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModfiyInstancePassword", params)
+            body = self.call("ModifyRedisName", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModfiyInstancePasswordResponse()
+                model = models.ModifyRedisNameResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -305,20 +557,20 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyAutoBackupConfig(self, request):
-        """设置自动备份时间
+    def ModifyRedisParams(self, request):
+        """修改Redis实例参数
 
-        :param request: 调用ModifyAutoBackupConfig所需参数的结构体。
-        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyAutoBackupConfigRequest`
-        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyAutoBackupConfigResponse`
+        :param request: 调用ModifyRedisParams所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyRedisParamsRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyRedisParamsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAutoBackupConfig", params)
+            body = self.call("ModifyRedisParams", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyAutoBackupConfigResponse()
+                model = models.ModifyRedisParamsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -333,20 +585,20 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyInstance(self, request):
-        """修改实例相关信息（目前支持：实例重命名）
+    def ModifyRedisProject(self, request):
+        """修改实例所属项目
 
-        :param request: 调用ModifyInstance所需参数的结构体。
-        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceRequest`
-        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceResponse`
+        :param request: 调用ModifyRedisProject所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyRedisProjectRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyRedisProjectResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstance", params)
+            body = self.call("ModifyRedisProject", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyInstanceResponse()
+                model = models.ModifyRedisProjectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -361,20 +613,20 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RenewInstance(self, request):
+    def RenewRedis(self, request):
         """续费实例
 
-        :param request: 调用RenewInstance所需参数的结构体。
-        :type request: :class:`tencentcloud.redis.v20180412.models.RenewInstanceRequest`
-        :rtype: :class:`tencentcloud.redis.v20180412.models.RenewInstanceResponse`
+        :param request: 调用RenewRedis所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.RenewRedisRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.RenewRedisResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("RenewInstance", params)
+            body = self.call("RenewRedis", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RenewInstanceResponse()
+                model = models.RenewRedisResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -389,20 +641,20 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ResetPassword(self, request):
-        """重置密码
+    def ResetRedisPassword(self, request):
+        """重置实例密码
 
-        :param request: 调用ResetPassword所需参数的结构体。
-        :type request: :class:`tencentcloud.redis.v20180412.models.ResetPasswordRequest`
-        :rtype: :class:`tencentcloud.redis.v20180412.models.ResetPasswordResponse`
+        :param request: 调用ResetRedisPassword所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.ResetRedisPasswordRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ResetRedisPasswordResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ResetPassword", params)
+            body = self.call("ResetRedisPassword", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ResetPasswordResponse()
+                model = models.ResetRedisPasswordResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -417,20 +669,132 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def UpgradeInstance(self, request):
+    def RestoreInstance(self, request):
+        """恢复 CRS 实例
+
+        :param request: 调用RestoreInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.RestoreInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.RestoreInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RestoreInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RestoreInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetRedisAutoRenew(self, request):
+        """设置或取消自动续费， 设置自动续费后，系统将在实例到期时，自动发起续费
+
+        :param request: 调用SetRedisAutoRenew所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.SetRedisAutoRenewRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.SetRedisAutoRenewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetRedisAutoRenew", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetRedisAutoRenewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def Test(self, request):
+        """asdf
+
+        :param request: 调用Test所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.TestRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.TestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("Test", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TestResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeRedis(self, request):
         """升级实例
 
-        :param request: 调用UpgradeInstance所需参数的结构体。
-        :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceRequest`
-        :rtype: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceResponse`
+        :param request: 调用UpgradeRedis所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeRedisRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.UpgradeRedisResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeInstance", params)
+            body = self.call("UpgradeRedis", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.UpgradeInstanceResponse()
+                model = models.UpgradeRedisResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeRedisInquiryPrice(self, request):
+        """查询升级实例价格。
+
+        :param request: 调用UpgradeRedisInquiryPrice所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeRedisInquiryPriceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.UpgradeRedisInquiryPriceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeRedisInquiryPrice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeRedisInquiryPriceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
