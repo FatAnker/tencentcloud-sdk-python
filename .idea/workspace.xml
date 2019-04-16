@@ -241,10 +241,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="15" />
-    <option name="y" value="215" />
-    <option name="width" value="1715" />
-    <option name="height" value="825" />
+    <option name="x" value="20" />
+    <option name="y" value="11" />
+    <option name="width" value="1384" />
+    <option name="height" value="910" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -341,12 +341,12 @@
       <option name="presentableId" value="Default" />
       <updated>1553780103733</updated>
       <workItem from="1553780105547" duration="41000" />
-      <workItem from="1555383113387" duration="8853000" />
+      <workItem from="1555383113387" duration="9148000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8894000" />
+    <option name="totallyTimeSpent" value="9189000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
