@@ -2,7 +2,159 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11ad2b7f-0865-4fdc-b9db-eb904d20c18d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/QcloudApi/modules/dfw.py" beforeDir="false" afterPath="$PROJECT_DIR$/QcloudApi/modules/dfw.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tce/tcloud/utils/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/ApplySnapshot.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/ApplySnapshot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/AttachDisks.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/AttachDisks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/BindAutoSnapshotPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/BindAutoSnapshotPolicy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/CreateAutoSnapshotPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/CreateAutoSnapshotPolicy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/CreateDisks.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/CreateDisks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/CreateSnapshot.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/CreateSnapshot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/DeleteAutoSnapshotPolicies.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/DeleteAutoSnapshotPolicies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/DeleteSnapshots.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/DeleteSnapshots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/DescribeAutoSnapshotPolicies.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/DescribeAutoSnapshotPolicies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/DescribeDiskAssociatedAutoSnapshotPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/DescribeDiskAssociatedAutoSnapshotPolicy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/DescribeDiskConfigQuota.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/DescribeDiskConfigQuota.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/DescribeDisks.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/DescribeDisks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/DescribeInstancesDiskNum.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/DescribeInstancesDiskNum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/DescribeSnapshots.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/DescribeSnapshots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/DetachDisks.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/DetachDisks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/ModifyDiskAttributes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/ModifyDiskAttributes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/ModifySnapshotAttribute.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/ModifySnapshotAttribute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/ResizeDisk.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/ResizeDisk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/TerminateDisks.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/TerminateDisks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cbs/UnbindAutoSnapshotPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cbs/UnbindAutoSnapshotPolicy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cfs/CreateCfsFileSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cfs/CreateCfsFileSystem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cfs/CreateCfsPGroup.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cfs/CreateCfsPGroup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cfs/CreateCfsRule.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cfs/CreateCfsRule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cfs/DeleteCfsFileSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cfs/DeleteCfsFileSystem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cfs/DeleteCfsPGroup.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cfs/DeleteCfsPGroup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cfs/QueryCfsFileSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cfs/QueryCfsFileSystem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cfs/QueryCfsPGroup.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cfs/QueryCfsPGroup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cfs/QueryCfsRule.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cfs/QueryCfsRule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cfs/QueryMountTarget.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cfs/QueryMountTarget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cfs/UpdateCfsFileSystemName.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cfs/UpdateCfsFileSystemName.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cfs/UpdateCfsFileSystemPGroup.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cfs/UpdateCfsFileSystemPGroup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cfs/UpdateCfsFileSystemSizeLimit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cfs/UpdateCfsFileSystemSizeLimit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cfs/UpdateCfsPGroup.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cfs/UpdateCfsPGroup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/ckafka/AddPartition.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/ckafka/AddPartition.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/ckafka/GetInstanceAttributes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/ckafka/GetInstanceAttributes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/ckafka/GetTopicAttributes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/ckafka/GetTopicAttributes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/ckafka/ListInstance.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/ckafka/ListInstance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/ckafka/ListTopic.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/ckafka/ListTopic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/ckafka/SetInstanceAttributes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/ckafka/SetInstanceAttributes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/ckafka/SetTopicAttributes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/ckafka/SetTopicAttributes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cmq/GetQueueAttributes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cmq/GetQueueAttributes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cmq/GetSubscriptionAttributes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cmq/GetSubscriptionAttributes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cmq/GetTopicAttributes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cmq/GetTopicAttributes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cmq/ListQueue.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cmq/ListQueue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cmq/ListSubscriptionByTopic.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cmq/ListSubscriptionByTopic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cmq/ListTopic.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cmq/ListTopic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/AssociateInstancesKeyPairs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/AssociateInstancesKeyPairs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/AssociateSecurityGroups.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/AssociateSecurityGroups.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/CreateImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/CreateImage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/CreateKeyPair.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/CreateKeyPair.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DeleteImages.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DeleteImages.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DeleteKeyPairs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DeleteKeyPairs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeImageQuota.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeImageQuota.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeImageSharePermission.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeImageSharePermission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeImages.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeImages.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeImportImageOs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeImportImageOs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeInstanceFamilyConfigs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeInstanceFamilyConfigs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeInstanceTypeConfigs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeInstanceTypeConfigs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeInstances.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeInstances.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeInternetChargeTypeConfigs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeInternetChargeTypeConfigs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeKeyPairs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeKeyPairs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeRegions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeRegions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeZones.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DescribeZones.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/DisassociateSecurityGroups.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/DisassociateSecurityGroups.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/ImportImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/ImportImage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/InquiryPriceModifyInstancesChargeType.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/InquiryPriceModifyInstancesChargeType.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/InquiryPriceRenewInstances.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/InquiryPriceRenewInstances.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/InquiryPriceResetInstance.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/InquiryPriceResetInstance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/InquiryPriceResetInstancesInternetMaxBandwidth.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/InquiryPriceResetInstancesInternetMaxBandwidth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/InquiryPriceResetInstancesType.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/InquiryPriceResetInstancesType.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/ModifyImageAttribute.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/ModifyImageAttribute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/ModifyInstancesAttribute.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/ModifyInstancesAttribute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/ModifyKeyPairAttribute.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/ModifyKeyPairAttribute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/RebootInstances.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/RebootInstances.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/RenewInstances.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/RenewInstances.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/ResetInstance.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/ResetInstance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/ResetInstancesInternetMaxBandwidth.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/ResetInstancesInternetMaxBandwidth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/ResetInstancesPassword.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/ResetInstancesPassword.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/ResetInstancesType.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/ResetInstancesType.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/RunInstances.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/RunInstances.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/StartInstances.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/StartInstances.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/StopInstances.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/StopInstances.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/cvm/TerminateInstances.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/cvm/TerminateInstances.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/dfw/A_ModifySecurityGroupsOfInstance.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/dfw/A_ModifySecurityGroupsOfInstance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/dfw/A_ModifySecurityGroupsOfNetworkInterface.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/dfw/A_ModifySecurityGroupsOfNetworkInterface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/dfw/CreateSecurityGroup.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/dfw/CreateSecurityGroup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/dfw/DeleteSecurityGroup.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/dfw/DeleteSecurityGroup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/dfw/DescribeAssociateSecurityGroups.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/dfw/DescribeAssociateSecurityGroups.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/dfw/DescribeInstancesOfSecurityGroup.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/dfw/DescribeInstancesOfSecurityGroup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/dfw/DescribeNetworkInterfacesOfSecurityGroup.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/dfw/DescribeNetworkInterfacesOfSecurityGroup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/dfw/DescribeSecurityGroupPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/dfw/DescribeSecurityGroupPolicy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/dfw/DescribeSecurityGroups.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/dfw/DescribeSecurityGroups.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/dfw/DescribeVpcEx.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/dfw/DescribeVpcEx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/dfw/ModifySecurityGroupAttributes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/dfw/ModifySecurityGroupAttributes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/dfw/ModifySecurityGroupPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/dfw/ModifySecurityGroupPolicy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/monitor/DescribeBaseMetrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/monitor/DescribeBaseMetrics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/utils/server_conf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/AcceptVpcPeeringConnection.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/AcceptVpcPeeringConnection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/AddUserGw.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/AddUserGw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/AssignPrivateIpAddresses.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/AssignPrivateIpAddresses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/AssociateRouteTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/AssociateRouteTable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/CreateDirectConnectGateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/CreateDirectConnectGateway.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/CreateNatGateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/CreateNatGateway.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/CreateNetworkAcl.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/CreateNetworkAcl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/CreateNetworkInterface.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/CreateNetworkInterface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/CreateRoute.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/CreateRoute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/CreateRouteTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/CreateRouteTable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/CreateSubnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/CreateSubnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/CreateSubnetAclRule.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/CreateSubnetAclRule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/CreateVpc.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/CreateVpc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/CreateVpcPeeringConnection.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/CreateVpcPeeringConnection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteDirectConnectGateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteDirectConnectGateway.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteNetworkAcl.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteNetworkAcl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteNetworkInterface.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteNetworkInterface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteRoute.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteRoute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteRouteTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteRouteTable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteSubnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteSubnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteUserGw.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteUserGw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteVpc.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteVpc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteVpcPeeringConnection.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DeleteVpcPeeringConnection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeDirectConnectGateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeDirectConnectGateway.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalDestinationIPPortTranslationNatRule.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalDestinationIPPortTranslationNatRule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalIPTranslationAclRule.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalIPTranslationAclRule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalIPTranslationNatRule.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalIPTranslationNatRule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalSourceIPPortTranslationAclRule.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalSourceIPPortTranslationAclRule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalSourceIPPortTranslationNatRule.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalSourceIPPortTranslationNatRule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeNatGateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeNatGateway.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeNetworkAcl.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeNetworkAcl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeNetworkInterfaces.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeNetworkInterfaces.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeRouteTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeRouteTable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeSubnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeSubnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeSubnetEx.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeSubnetEx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeUserGw.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeUserGw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpcClassicLink.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpcClassicLink.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpcEx.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpcEx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpcPeeringConnection.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpcPeeringConnection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpnConn.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpnConn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DetachNetworkInterface.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DetachNetworkInterface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/DeteleSubnetAclRule.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/DeteleSubnetAclRule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/EnableVpcPeeringConnection.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/EnableVpcPeeringConnection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyDirectConnectGateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyDirectConnectGateway.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyNatGateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyNatGateway.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyNetworkAcl.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyNetworkAcl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyNetworkAclEntry.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyNetworkAclEntry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyRouteTableAttribute.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyRouteTableAttribute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/ModifySubnetAttribute.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/ModifySubnetAttribute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyUserGw.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyUserGw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyVpcAttribute.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyVpcAttribute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyVpcPeeringConnection.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/ModifyVpcPeeringConnection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/RejectVpcPeeringConnection.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/RejectVpcPeeringConnection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tce/tcloud/vpc/UnassignPrivateIpAddresses.py" beforeDir="false" afterPath="$PROJECT_DIR$/tce/tcloud/vpc/UnassignPrivateIpAddresses.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,27 +162,23 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/tencentcloud_sdk_python$test.coverage" NAME="test Coverage Results" MODIFIED="1555386914585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tce/tcloud/cbs" />
+  </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/QcloudApi/modules/dfw.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/QcloudApi/modules/vpc.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>cbs</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,11 +186,61 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/QcloudApi/modules/dfw.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/AssociateRouteTable.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/CreateDirectConnectGateway.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/CreateNatGateway.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/CreateNetworkAcl.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/CreateNetworkInterface.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/CreateRoute.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/CreateRouteTable.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/CreateSubnet.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/CreateSubnetAclRule.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/CreateVpc.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/CreateVpcPeeringConnection.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DeleteDirectConnectGateway.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DeleteNetworkAcl.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DeleteNetworkInterface.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DeleteRoute.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DeleteRouteTable.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DeleteSubnet.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DeleteUserGw.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DeleteVpc.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DeleteVpcPeeringConnection.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeDirectConnectGateway.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalDestinationIPPortTranslationNatRule.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalIPTranslationAclRule.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalIPTranslationNatRule.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalSourceIPPortTranslationAclRule.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalSourceIPPortTranslationNatRule.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeNatGateway.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeNetworkAcl.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeNetworkInterfaces.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeRouteTable.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeSubnet.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeSubnetEx.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeUserGw.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpcClassicLink.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpcEx.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpcPeeringConnection.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpnConn.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DetachNetworkInterface.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/DeteleSubnetAclRule.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/EnableVpcPeeringConnection.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/ModifyDirectConnectGateway.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/ModifyNatGateway.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/ModifyNetworkAcl.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/ModifyNetworkAclEntry.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/ModifyRouteTableAttribute.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/ModifySubnetAttribute.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/ModifyUserGw.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/ModifyVpcAttribute.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/ModifyVpcPeeringConnection.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/RejectVpcPeeringConnection.py" />
+        <option value="$PROJECT_DIR$/tce/tcloud/vpc/UnassignPrivateIpAddresses.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="15" />
     <option name="y" value="215" />
     <option name="width" value="1715" />
@@ -64,19 +262,20 @@
             <path>
               <item name="tencentcloud-sdk-python" type="b2602c69:ProjectViewProjectNode" />
               <item name="tencentcloud-sdk-python" type="462c0819:PsiDirectoryNode" />
-              <item name="QcloudApi" type="462c0819:PsiDirectoryNode" />
+              <item name="tce" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tencentcloud-sdk-python" type="b2602c69:ProjectViewProjectNode" />
               <item name="tencentcloud-sdk-python" type="462c0819:PsiDirectoryNode" />
-              <item name="QcloudApi" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="tce" type="462c0819:PsiDirectoryNode" />
+              <item name="tcloud" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tencentcloud-sdk-python" type="b2602c69:ProjectViewProjectNode" />
               <item name="tencentcloud-sdk-python" type="462c0819:PsiDirectoryNode" />
-              <item name="QcloudApi" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="tce" type="462c0819:PsiDirectoryNode" />
+              <item name="tcloud" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -102,6 +301,35 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="tencentcloud-sdk-python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tce/tcloud/cbs" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tce/tcloud/cbs/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.test" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -113,56 +341,479 @@
       <option name="presentableId" value="Default" />
       <updated>1553780103733</updated>
       <workItem from="1553780105547" duration="41000" />
+      <workItem from="1555383113387" duration="8853000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41000" />
+    <option name="totallyTimeSpent" value="8894000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2533512" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5679887" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/QcloudApi/modules/vpc.py">
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/CreateNetworkAcl.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QcloudApi/modules/dfw.py">
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/CreateNetworkInterface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/CreateRoute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/CreateRouteTable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/CreateSubnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/CreateSubnetAclRule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/CreateVpc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/CreateVpcPeeringConnection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DeleteDirectConnectGateway.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DeleteVpc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DeleteUserGw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DeleteSubnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DeleteRouteTable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DeleteRoute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DeleteNetworkAcl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DeleteVpcPeeringConnection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeDirectConnectGateway.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalDestinationIPPortTranslationNatRule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="22" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalIPTranslationAclRule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalIPTranslationNatRule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalSourceIPPortTranslationAclRule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeLocalSourceIPPortTranslationNatRule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeNatGateway.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeNetworkAcl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeNetworkInterfaces.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeRouteTable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeSubnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeSubnetEx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeUserGw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpcClassicLink.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpcEx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpcPeeringConnection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DescribeVpnConn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DetachNetworkInterface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DeteleSubnetAclRule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/EnableVpcPeeringConnection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/ModifyDirectConnectGateway.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/ModifyNatGateway.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/ModifyNetworkAcl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/ModifyNetworkAclEntry.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/ModifyRouteTableAttribute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/ModifySubnetAttribute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/ModifyUserGw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/ModifyVpcAttribute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/ModifyVpcPeeringConnection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/RejectVpcPeeringConnection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/UnassignPrivateIpAddresses.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/dfw/ModifySecurityGroupPolicy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/dfw/A_ModifySecurityGroupsOfInstance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/vpc/DeleteNetworkInterface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tce/tcloud/utils/config.ini">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
