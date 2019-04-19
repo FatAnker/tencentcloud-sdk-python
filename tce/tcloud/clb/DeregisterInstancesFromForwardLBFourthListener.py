@@ -1,21 +1,24 @@
 # -*- coding: utf8 -*-
 from QcloudApi.qcloudapi import QcloudApi
-from tce.tcloud.utils.server_conf import settings
+from tce.tcloud.utils.config import global_config
 
 # 设置需要加载的模块
 module = 'lb'
 
 # 对应接口的接口名，请参考wiki文档上对应接口的接口名
-action = 'DeleteForwardLBListenerRules'
-Region = 'shanghai'
+action = 'DeregisterInstancesFromForwardLB'
+region = global_config.get('regions')
+params = global_config.get(region)
+secretId = params['secretId']
+secretKey = params['secretKey']
+domain =params['domain']
 
-total_params = settings.get(Region)
+
 # 云API的公共参数
-print(total_params['secretId'])
 config = {
-    'Region': Region,
-    'secretId': total_params['secretId'],
-    'secretKey': total_params['secretKey'],
+    'Region': region,
+    'secretId': secretId,
+    'secretKey': secretKey,
     'method': 'GET',
     'SignatureMethod': 'HmacSHA1'
 }

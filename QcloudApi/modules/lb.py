@@ -16,4 +16,6 @@ from QcloudApi.modules import base
 
 
 class Lb(base.Base):
-    requestHost = 'lb.api.qcloud.com'
+    #requestHost = 'lb.api.qcloud.com'
+    # requestHost = 'lb.api2.401.tcecqpoc.fsphere.cn'
+    requestHost = 'lb.api2.test.403a.tcecqpoc.fsphere.cn'
